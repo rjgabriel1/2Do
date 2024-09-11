@@ -61,9 +61,19 @@ export default function App() {
   function renderTodo() {
     return todoList.map((todo, index) => (
       <View key={index} style={s.cardItem}>
-        <TodoCard todo={todo} />
+        <TodoCard onPress={updateTodo} todo={todo} />
       </View>
     ));
+  }
+
+  function updateTodo(todo) {
+    const updatedTodo = { ...todo, is_completed: !todo.is_completed };
+    const updatedTodoList = [...todoList];
+    const indexToUpdate = updatedTodoList.findIndex(
+      (t) => t.id === updatedTodo.id
+    );
+    updatedTodoList[indexToUpdate] = updatedTodo;
+    setTodoList(updatedTodoList);
   }
   return (
     <>
@@ -73,7 +83,7 @@ export default function App() {
             <Header />
           </View>
           <View style={s.body}>
-            <ScrollView  >{renderTodo()}</ScrollView>
+            <ScrollView>{renderTodo()}</ScrollView>
           </View>
         </SafeAreaView>
       </SafeAreaProvider>

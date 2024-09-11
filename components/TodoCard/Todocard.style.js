@@ -15,8 +15,9 @@ export const s = StyleSheet.create({
     elevation: 4,
     flexDirection: "row",
     alignItems: "center",
-        justifyContent: "space-between",
-    paddingHorizontal:20
+    justifyContent: "space-between",
+        paddingHorizontal: 20,
+    
   },
   check: {
     height: 25,
